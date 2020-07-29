@@ -7,7 +7,7 @@ function itemUrl(id) {
 async function fetchTopPostsIds() {
   try {
     const response = await fetch(topStoriesUrl);
-    return response.json();
+    return await response.json();
   } catch (e) {
     throw new Error(`Oh no!!!!!. We got the error: ${e}`);
   }
@@ -16,15 +16,16 @@ async function fetchTopPostsIds() {
 async function fetchItem(id) {
   try {
     const response = await fetch(itemUrl(id));
-    return response.json();
+    return await response.json();
   } catch (e) {
     throw new Error(`Oh no!!!!!. We got the error: ${e}`);
   }
 }
 
-export async function fetchTopPosts() {
+export async function fetchTopPosts(limit = 50) {
   const ids = await fetchTopPostsIds();
-  const topPosts = ids.map(id => fetchItem(id));
+  const limitIds = ids.slice(0, limit);
+  const topPosts = limitIds.map(id => fetchItem(id));
 
-  return topPosts;
+  return Promise.all(topPosts);
 }

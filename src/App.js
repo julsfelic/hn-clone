@@ -1,5 +1,6 @@
 import React from "react";
-import { fetchTopPosts } from "./api/hackerNews";
+import PostList from "./components/PostList";
+
 import "./App.css";
 
 function App() {
@@ -9,12 +10,14 @@ function App() {
         <nav className="row space-between">
           <ul className="row nav">
             <li>
-              <a className="nav-link">Top</a>
+              <a href="/" className="nav-link">
+                Top
+              </a>
             </li>
           </ul>
         </nav>
       </header>
-      {console.log(fetchTopPosts())}
+      <PostList />
     </div>
   );
 }
