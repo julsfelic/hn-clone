@@ -1,10 +1,12 @@
 import React from "react";
 import Post from "./Post";
+import Loading from "./Loading";
 import { fetchTopPosts } from "../api/hackerNews";
 
 export default class PostList extends React.Component {
   state = {
-    posts: []
+    posts: [],
+    loading: true
   };
 
   componentDidMount() {
@@ -13,14 +15,19 @@ export default class PostList extends React.Component {
     if (!posts.length) {
       fetchTopPosts().then(posts => {
         this.setState({
-          posts
+          posts,
+          loading: false
         });
       });
     }
   }
 
   render() {
-    const { posts } = this.state;
+    const { posts, loading } = this.state;
+
+    if (loading) {
+      return <Loading />;
+    }
 
     return (
       <ul>

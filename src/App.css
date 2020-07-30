@@ -60,3 +60,8 @@ li {
 .meta-info-light a {
   color: black;
 }
+
+.loading {
+  font-size: 36px;
+  text-align: center;
+}
