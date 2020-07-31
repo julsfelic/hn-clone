@@ -1,9 +1,28 @@
 import React from "react";
 
-import { useQuery } from "../hooks/query";
+import { fetchUser } from "../api/hackerNews";
 
-export default function User() {
-  const query = useQuery();
+export default class User extends React.Component {
+  state = {
+    user: null
+  };
 
-  return <h1>{query.get("id")}</h1>;
+  componentDidMount() {
+    const { user } = this.state;
+
+    if (!user) {
+      fetchUser(this.userName()).then(user => this.setState({ user }));
+    }
+  }
+
+  userName = () => {
+    const { location } = this.props;
+    const query = new URLSearchParams(location.search);
+
+    return query.get("id");
+  };
+
+  render() {
+    return <h1 className="header">{this.userName()}</h1>;
+  }
 }

@@ -26,9 +26,7 @@ function App() {
           <Route exact path="/">
             <PostList />
           </Route>
-          <Route path="/user">
-            <User />
-          </Route>
+          <Route path="/user" component={User} />
         </Switch>
       </div>
     </Router>
