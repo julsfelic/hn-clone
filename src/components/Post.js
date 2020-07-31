@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export default function Post({ post }) {
@@ -17,7 +18,7 @@ export default function Post({ post }) {
       </a>
       <div className="meta-info-light">
         <span>
-          by <a href="/">{by}</a>
+          by <Link to={`/user?id=${by}`}>{by}</Link>
         </span>
         <span>on {formatDate(time)}</span>
         <span>
