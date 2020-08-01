@@ -5,7 +5,7 @@ import Loading from "./components/Loading";
 
 import "./App.css";
 
-const PostList = React.lazy(() => import("./components/PostList"));
+const TopPosts = React.lazy(() => import("./components/TopPosts"));
 const User = React.lazy(() => import("./components/User"));
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Switch>
           <Suspense fallback={<Loading />}>
             <Route exact path="/">
-              <PostList />
+              <TopPosts />
             </Route>
             <Route path="/user" component={User} />
           </Suspense>

@@ -8,15 +8,6 @@ function userUrl(id) {
   return `https://hacker-news.firebaseio.com/v0/user/${id}.json`;
 }
 
-async function fetchTopPostsIds() {
-  try {
-    const response = await fetch(topStoriesUrl);
-    return await response.json();
-  } catch (e) {
-    throw new Error(`Oh no!!!!!. We got the error: ${e}`);
-  }
-}
-
 async function fetchItem(id) {
   try {
     const response = await fetch(itemUrl(id));
@@ -26,17 +17,26 @@ async function fetchItem(id) {
   }
 }
 
-export async function fetchTopPosts(limit = 50) {
-  const ids = await fetchTopPostsIds();
+export async function fetchItems(ids, limit = 50) {
   const limitIds = ids.slice(0, limit);
-  const topPosts = limitIds.map(id => fetchItem(id));
+  console.log("fetchItems ids", ids);
+  const items = limitIds.map(id => fetchItem(id));
 
-  return Promise.all(topPosts);
+  return Promise.all(items);
 }
 
 export async function fetchUser(id) {
   try {
     const response = await fetch(userUrl(id));
+    return await response.json();
+  } catch (e) {
+    throw new Error(`Oh no!!!!!. We got the error: ${e}`);
+  }
+}
+
+export async function fetchTopPostsIds() {
+  try {
+    const response = await fetch(topStoriesUrl);
     return await response.json();
   } catch (e) {
     throw new Error(`Oh no!!!!!. We got the error: ${e}`);

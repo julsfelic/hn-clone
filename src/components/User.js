@@ -1,5 +1,6 @@
 import React from "react";
 
+import ItemList from "./ItemList";
 import Loading from "./Loading";
 
 import { fetchUser } from "../api/hackerNews";
@@ -46,6 +47,8 @@ export default class User extends React.Component {
             has <b>{user.karma}</b> karma
           </span>
         </div>
+        <h2>Posts</h2>
+        <ItemList ids={user.submitted} />
       </>
     );
   }

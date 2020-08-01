@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 import { formatDate } from "../utils/dateFormatting";
 
-export default function Post({ post }) {
-  const { title, by, time, descendants, url } = post;
+export default function Item({ item }) {
+  const { title, by, time, descendants, url } = item;
 
   return (
     <li className="post">
@@ -25,6 +25,6 @@ export default function Post({ post }) {
   );
 }
 
-Post.propTypes = {
-  post: PropTypes.object.isRequired
+Item.propTypes = {
+  item: PropTypes.object.isRequired
 };
