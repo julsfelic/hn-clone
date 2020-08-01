@@ -2,13 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export default function Post({ post }) {
-  const formatDate = time =>
-    new Date(time * 1000).toLocaleString("en-US", {
-      dateStyle: "short",
-      timeStyle: "short"
-    });
+import { formatDate } from "../utils/dateFormatting";
 
+export default function Post({ post }) {
   const { title, by, time, descendants, url } = post;
 
   return (

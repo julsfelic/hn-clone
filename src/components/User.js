@@ -1,17 +1,23 @@
 import React from "react";
 
+import Loading from "./Loading";
+
 import { fetchUser } from "../api/hackerNews";
+import { formatDate } from "../utils/dateFormatting";
 
 export default class User extends React.Component {
   state = {
-    user: null
+    user: {},
+    loading: true
   };
 
   componentDidMount() {
     const { user } = this.state;
 
-    if (!user) {
-      fetchUser(this.userName()).then(user => this.setState({ user }));
+    if (Object.entries(user).length === 0) {
+      fetchUser(this.userName()).then(user =>
+        this.setState({ user, loading: false })
+      );
     }
   }
 
@@ -23,6 +29,24 @@ export default class User extends React.Component {
   };
 
   render() {
-    return <h1 className="header">{this.userName()}</h1>;
+    const { user, loading } = this.state;
+
+    if (loading) {
+      return <Loading />;
+    }
+
+    return (
+      <>
+        <h1 className="header">{this.userName()}</h1>
+        <div className="meta-info-light">
+          <span>
+            joined <b>{formatDate(user.created)}</b>
+          </span>
+          <span>
+            has <b>{user.karma}</b> karma
+          </span>
+        </div>
+      </>
+    );
   }
 }

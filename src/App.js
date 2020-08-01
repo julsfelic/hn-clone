@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import PostList from "./components/PostList";
-import User from "./components/User";
+import Loading from "./components/Loading";
 
 import "./App.css";
+
+const PostList = React.lazy(() => import("./components/PostList"));
+const User = React.lazy(() => import("./components/User"));
 
 function App() {
   return (
@@ -23,10 +25,12 @@ function App() {
         </header>
 
         <Switch>
-          <Route exact path="/">
-            <PostList />
-          </Route>
-          <Route path="/user" component={User} />
+          <Suspense fallback={<Loading />}>
+            <Route exact path="/">
+              <PostList />
+            </Route>
+            <Route path="/user" component={User} />
+          </Suspense>
         </Switch>
       </div>
     </Router>
