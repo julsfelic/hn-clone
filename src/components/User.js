@@ -33,7 +33,7 @@ export default class User extends React.Component {
     const { user, loading } = this.state;
 
     if (loading) {
-      return <Loading />;
+      return <Loading text="Fetching User" />;
     }
 
     return (
@@ -48,7 +48,7 @@ export default class User extends React.Component {
           </span>
         </div>
         <h2>Posts</h2>
-        <ItemList ids={user.submitted} />
+        <ItemList ids={user.submitted} loadingText="Fetching posts" />
       </>
     );
   }

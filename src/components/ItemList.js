@@ -12,7 +12,8 @@ export default class ItemList extends React.Component {
   };
 
   static propTypes = {
-    ids: PropTypes.array
+    ids: PropTypes.array,
+    loadingText: PropTypes.string
   };
 
   componentDidMount() {
@@ -33,9 +34,10 @@ export default class ItemList extends React.Component {
 
   render() {
     const { items, loading } = this.state;
+    const { loadingText } = this.props;
 
     if (loading) {
-      return <Loading />;
+      return <Loading text={loadingText} />;
     }
 
     return (
