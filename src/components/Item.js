@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { formatDate } from "../utils/dateFormatting";
 
 export default function Item({ item }) {
-  const { title, by, time, descendants, url } = item;
+  const { title, by, time, descendants, url, id } = item;
 
   return (
     <li className="post">
@@ -18,7 +18,7 @@ export default function Item({ item }) {
         </span>
         <span>on {formatDate(time)}</span>
         <span>
-          with <a href="/">{descendants}</a> comments
+          with <Link to={`/post?id=${id}`}>{descendants}</Link> comments
         </span>
       </div>
     </li>

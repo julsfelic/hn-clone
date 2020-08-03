@@ -13,6 +13,7 @@ import "./App.css";
 const TopPosts = React.lazy(() => import("./components/TopPosts"));
 const User = React.lazy(() => import("./components/User"));
 const NewPosts = React.lazy(() => import("./components/NewPosts"));
+const Post = React.lazy(() => import("./components/Post"));
 
 function App() {
   return (
@@ -53,6 +54,9 @@ function App() {
             <Route path="/user" component={User} />
             <Route path="/new">
               <NewPosts />
+            </Route>
+            <Route path="/post">
+              <Post />
             </Route>
           </Suspense>
         </Switch>
