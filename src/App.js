@@ -55,9 +55,7 @@ function App() {
             <Route path="/new">
               <NewPosts />
             </Route>
-            <Route path="/post">
-              <Post />
-            </Route>
+            <Route path="/post" component={Post} />
           </Suspense>
         </Switch>
       </div>

@@ -9,7 +9,7 @@ function userUrl(id) {
   return `https://hacker-news.firebaseio.com/v0/user/${id}.json`;
 }
 
-async function fetchItem(id) {
+export async function fetchItem(id) {
   try {
     const response = await fetch(itemUrl(id));
     return await response.json();
