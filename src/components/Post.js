@@ -1,4 +1,5 @@
 import React from "react";
+import ItemMetaInfo from "./ItemMetaInfo";
 import Loading from "./Loading";
 
 import { fetchItem } from "../api/hackerNews";
@@ -34,11 +35,14 @@ export default class Post extends React.Component {
     }
 
     return (
-      <h1 className="header">
-        <a className="link" href={post.url}>
-          {post.title}
-        </a>
-      </h1>
+      <>
+        <h1 className="header">
+          <a className="link" href={post.url}>
+            {post.title}
+          </a>
+        </h1>
+        <ItemMetaInfo {...post} />
+      </>
     );
   }
 }
