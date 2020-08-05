@@ -20,7 +20,6 @@ export async function fetchItem(id) {
 
 export async function fetchItems(ids, limit = 50) {
   const limitIds = ids.slice(0, limit);
-  console.log("fetchItems ids", ids);
   const items = limitIds.map(id => fetchItem(id));
 
   return Promise.all(items);

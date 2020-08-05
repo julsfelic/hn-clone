@@ -1,6 +1,8 @@
 import React from "react";
+
 import ItemMetaInfo from "./ItemMetaInfo";
 import Loading from "./Loading";
+import Comments from "./Comments";
 
 import { fetchItem } from "../api/hackerNews";
 
@@ -42,6 +44,7 @@ export default class Post extends React.Component {
           </a>
         </h1>
         <ItemMetaInfo {...post} />
+        <Comments ids={post.kids} />
       </>
     );
   }
