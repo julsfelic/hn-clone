@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+import { ThemeConsumer } from "../contexts/theme";
 import { formatDate } from "../utils/dateFormatting";
 
 export default function ItemMetaInfo({
@@ -12,17 +13,21 @@ export default function ItemMetaInfo({
   displayComments
 }) {
   return (
-    <div className="meta-info-light">
-      <span>
-        by <Link to={`/user?id=${by}`}>{by}</Link>
-      </span>
-      <span>on {formatDate(time)}</span>
-      {displayComments && (
-        <span>
-          with <Link to={`/post?id=${id}`}>{descendants}</Link> comments
-        </span>
+    <ThemeConsumer>
+      {({ theme }) => (
+        <div className={`meta-info-${theme}`}>
+          <span>
+            by <Link to={`/user?id=${by}`}>{by}</Link>
+          </span>
+          <span>on {formatDate(time)}</span>
+          {displayComments && (
+            <span>
+              with <Link to={`/post?id=${id}`}>{descendants}</Link> comments
+            </span>
+          )}
+        </div>
       )}
-    </div>
+    </ThemeConsumer>
   );
 }
 

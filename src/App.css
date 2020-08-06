@@ -52,20 +52,6 @@ li {
   font-weight: bold;
 }
 
-.meta-info-light {
-  margin-top: 5px;
-  color: gray;
-}
-
-.meta-info-light span {
-  margin: 10px 0;
-  margin-right: 6px;
-}
-
-.meta-info-light a {
-  color: black;
-}
-
 .loading {
   font-size: 36px;
   text-align: center;
@@ -80,4 +66,47 @@ li {
   padding: 10px;
   margin: 10px 0;
   border-radius: 5px;
+}
+
+.btn-clear {
+  border: none;
+  background: transparent;
+}
+
+.dark {
+  color: #dadada;
+  background: #1c2022;
+  min-height: 100%;
+}
+
+.dark a {
+  color: rgb(203, 203, 203);
+}
+
+.meta-info-light {
+  margin-top: 5px;
+  color: gray;
+}
+
+.meta-info-light span {
+  margin: 10px 0;
+  margin-right: 6px;
+}
+
+.meta-info-light a {
+  color: black;
+}
+
+.meta-info-dark {
+  margin-top: 5px;
+  color: gray;
+}
+
+.meta-info-dark span {
+  margin: 10px 0;
+  margin-right: 6px;
+}
+
+.meta-info-dark a {
+  color: #bebebe;
 }

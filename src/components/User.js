@@ -29,6 +29,12 @@ export default class User extends React.Component {
     return query.get("id");
   };
 
+  userAbout = () => {
+    const { about } = this.state.user;
+
+    return { __html: about };
+  };
+
   render() {
     const { user, loading } = this.state;
 
@@ -47,6 +53,7 @@ export default class User extends React.Component {
             has <b>{user.karma}</b> karma
           </span>
         </div>
+        {user.about && <p dangerouslySetInnerHTML={this.userAbout()} />}
         <h2>Posts</h2>
         <ItemList ids={user.submitted} loadingText="Fetching posts" />
       </>
